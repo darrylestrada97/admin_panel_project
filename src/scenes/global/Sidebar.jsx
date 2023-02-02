@@ -43,7 +43,7 @@ const Sidebar = () => {
 
     return (
         <Box
-            sx={{
+            sx={isCollapsed ? {
                 "& .pro-sidebar-inner": {
                     background: `${colors.primary[400]} !important`,
                 },
@@ -51,7 +51,23 @@ const Sidebar = () => {
                     backgroundColor: "transparent !important",
                 },
                 "& .pro-inner-item": {
-                    padding: "5px 35px 5px 20px !important",
+                    padding: "5px 30px 5px 20px !important",
+                },
+                "& .pro-inner-item:hover": {
+                    color: "#868dfb !important",
+                },
+                "& .pro-menu-item.active": {
+                    color: "#6870fa !important",
+                },
+            } : {
+                "& .pro-sidebar-inner": {
+                    background: `${colors.primary[400]} !important`,
+                },
+                "& .pro-icon-wrapper": {
+                    backgroundColor: "transparent !important",
+                },
+                "& .pro-inner-item": {
+                    padding: "5px 5px 5px 20px !important",
                 },
                 "& .pro-inner-item:hover": {
                     color: "#868dfb !important",
@@ -77,10 +93,10 @@ const Sidebar = () => {
                                 display="flex"
                                 justifyContent="space-between"
                                 alignItems="center"
-                                ml="15px"
+                                ml="5px"
                             >
                                 <Typography variant="h3" color={colors.grey[100]}>
-                                    ADMINIS
+                                    CORPUS CONTROL
                                 </Typography>
                                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                                     <MenuOutlinedIcon />
@@ -107,16 +123,28 @@ const Sidebar = () => {
                                     fontWeight="bold"
                                     sx={{ m: "10px 0 0 0" }}
                                 >
-                                    Ed Roh
+                                    Darryl Estrada
                                 </Typography>
-                                <Typography variant="h5" color={colors.greenAccent[500]}>
-                                    VP Fancy Admin
+                                <Typography variant="h5" color={colors.greenAccent[300]}>
+                                    Super Admin
                                 </Typography>
                             </Box>
                         </Box>
                     )}
 
-                    <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+
+                    <Box paddingLeft={isCollapsed ? undefined : "0%"}>
+                        {isCollapsed && (
+                            <Box display="flex" justifyContent="center" alignItems="center">
+                                <img
+                                    alt="profile-user"
+                                    width="50px"
+                                    height="50px"
+                                    src={`../../assets/user.png`}
+                                    style={{ cursor: "default", borderRadius: "50%" }}
+                                />
+                            </Box>
+                        )}
                         <Item
                             title="Dashboard"
                             to="/"
